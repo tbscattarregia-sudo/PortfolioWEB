@@ -60,3 +60,30 @@ section {
 h1, h2 {
   color: #f8fafc;
 }
+
+/* HERO */
+#hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* ocupa casi toda la pantalla */
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  0% { opacity: 0; transform:translateY(20px); }
+  100% { opacity: 1; transform:translateY(0); }
+}
