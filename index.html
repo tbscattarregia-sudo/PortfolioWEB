@@ -57,8 +57,21 @@
             </section>
 
             <section id="contact">
-                <h2>Contactos</h2>
-                <p>Email: <a href="mailto:tb.scattarregia@gmail.com">tb.scattarregia@gmail.com</a></p>
+                <h2>Contacto</h2>
+                <p>Escríbeme tus dudas o propuestas directamente aquí:</p>
+                
+                <form action="https://formspree.io/f/xojadpve" method="POST">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required placeholder="Nombre">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Tu correo">
+
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required placeholder="Escribe tu mensaje aquí..."></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
             </section>
         </main>
 
