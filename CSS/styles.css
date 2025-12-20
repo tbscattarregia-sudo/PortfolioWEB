@@ -171,3 +171,23 @@ h1, h2 {
    margin-top: 1rem;
   }
  }
+
+ /* TRANSICIONES GENERALES */
+ h1, h2, h3, p, li, a {
+  transition: all 0.3s ease-in-out;
+ }
+
+ /* EFECTO HOVER SUAVE PARA TODOS LOS ENLACES */
+ a:hover {
+  color: #facc15; /* amarillo suave */
+ }
+ 
+/* EFECTO SHADOW EN TODAS LAS SECCIONES */
+section {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
