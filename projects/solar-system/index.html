@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Solar Interactivo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Sistema Solar Interactivo 🌌</h1>
+    <div id="solar-system">
+        <div class="sun" title="Sol"></div>
+
+        <div class="planet planet1" title="Mercurio" data-size="4879" data-distance="57"></div>
+        <div class="planet planet2" title="Venus" data-size="12104" data-distance="108"></div>
+        <div class="planet planet3" title="Tierra" data-size="12742" data-distance="150"></div>
+        <div class="planet planet4" title="Marte" data-size="6779" data-distance="228"></div>
+        <div class="planet planet5" title="Júpiter" data-size="139820" data-distance="778"></div>
+        <div class="planet planet6" title="Saturno" data-size="116460" data-distance="1427"></div>
+        <div class="planet planet7" title="Urano" data-size="50724" data-distance="2871"></div>
+        <div class="planet planet8" title="Neptuno" data-size="49244" data-distance="4495"></div>
+    </div>
+
+    <p id="planet-info"></p>
+    <p id="timer">Tiempo: 0s</p>
+    <button id="resetBtn">Reiniciar Simulación</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

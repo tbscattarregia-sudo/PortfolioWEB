@@ -1,0 +1,47 @@
+/* RESET Y BASE */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; background:#0f172a; color:#e5e7eb; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+.container { text-align:center; }
+
+/* TÍTULO */
+h1 { margin-bottom:1rem; }
+
+/* SOLAR SYSTEM */
+#solar-system { position:relative; width:600px; height:600px; margin:0 auto; border-radius:50%; background: radial-gradient(circle at center, #1e293b 40%, #0f172a 100%); }
+
+/* SOL */
+.sun { width:80px; height:80px; background:#facc15; border-radius:50%; position:absolute; top:50%; left:50%; margin:-40px 0 0 -40px; box-shadow:0 0 40px #facc15,0 0 80px #facc15; }
+
+/* PLANETAS */
+.planet { position:absolute; border-radius:50%; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.planet:hover { transform: scale(1.3); box-shadow: 0 0 20px #fff,0 0 40px #38bdf8; }
+
+/* PLANETAS Y ANIMACIONES DE ORBITA */
+.planet1 { width:15px; height:15px; background:#a3a3a3; top:50%; left:50%; animation: orbit1 5s linear infinite; }
+.planet2 { width:25px; height:25px; background:#f5deb3; top:50%; left:50%; animation: orbit2 7s linear infinite; }
+.planet3 { width:28px; height:28px; background:#38bdf8; top:50%; left:50%; animation: orbit3 9s linear infinite; }
+.planet4 { width:20px; height:20px; background:#f87171; top:50%; left:50%; animation: orbit4 11s linear infinite; }
+.planet5 { width:50px; height:50px; background:#f5a623; top:50%; left:50%; animation: orbit5 15s linear infinite; }
+.planet6 { width:45px; height:45px; background:#ffe066; top:50%; left:50%; animation: orbit6 18s linear infinite; }
+.planet7 { width:35px; height:35px; background:#7fdbff; top:50%; left:50%; animation: orbit7 22s linear infinite; }
+.planet8 { width:33px; height:33px; background:#0a74da; top:50%; left:50%; animation: orbit8 25s linear infinite; }
+
+/* ANIMACIONES ORBITA */
+@keyframes orbit1 { 0% { transform:rotate(0deg) translateX(60px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(60px) rotate(-360deg);} }
+@keyframes orbit2 { 0% { transform:rotate(0deg) translateX(90px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(90px) rotate(-360deg);} }
+@keyframes orbit3 { 0% { transform:rotate(0deg) translateX(120px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(120px) rotate(-360deg);} }
+@keyframes orbit4 { 0% { transform:rotate(0deg) translateX(160px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(160px) rotate(-360deg);} }
+@keyframes orbit5 { 0% { transform:rotate(0deg) translateX(220px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(220px) rotate(-360deg);} }
+@keyframes orbit6 { 0% { transform:rotate(0deg) translateX(270px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(270px) rotate(-360deg);} }
+@keyframes orbit7 { 0% { transform:rotate(0deg) translateX(320px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(320px) rotate(-360deg);} }
+@keyframes orbit8 { 0% { transform:rotate(0deg) translateX(370px) rotate(0deg);} 100% { transform:rotate(360deg) translateX(370px) rotate(-360deg);} }
+
+/* INFO PLANETA */
+#planet-info { margin-top:1rem; font-weight:bold; color:#facc15; }
+
+/* TIMER */
+#timer { margin-top:0.5rem; }
+
+/* BOTON REINICIO */
+#resetBtn { margin-top:1rem; padding:0.5rem 1rem; border:none; border-radius:6px; background:#38bdf8; color:#0f172a; cursor:pointer; font-weight:bold; transition:0.3s; }
+#resetBtn:hover { background:#facc15; }
