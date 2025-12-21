@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Memory Card Game</h1>
+
+<div class="game-container"></div>
+
+<p id="moves">Movimientos: 0</p>
+<p id="timer">Tiempo: 0s</p>
+<p id="bestTime">Mejor tiempo: --</p>
+
+<label for="difficulty">Dificultad:</label>
+<select id="difficulty">
+    <option value="easy">Fácil (4x2)</option>
+    <option value="medium">Medio (4x4)</option>
+    <option value="hard">Difícil (6x4)</option>
+</select>
+
+<button id="restartBtn">Reiniciar</button>
+
+<script src="script.js"></script>
+</body>
+</html>
