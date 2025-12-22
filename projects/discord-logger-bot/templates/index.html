@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs del Bot Discord</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Logs del Bot Discord</h1>
+    </header>
+
+    <main>
+<div class="log-container">
+    {% for log in logs %}
+        <div class="log-card {{ log.type }}">
+            <p>{{ log.content }}</p>
+        </div>
+    {% endfor %}
+</div>
+    </main>
+</body>
+</html>
