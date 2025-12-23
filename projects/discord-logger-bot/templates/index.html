@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logs del Bot Discord</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
     <header>
@@ -12,36 +12,44 @@
     </header>
 
     <main>
-        <div class="log-container" id="log-container">
-            {% for log in logs %}
-                <div class="log-card {{ log.type }}" data-id="{{ log.id }}">
-                    <p>{{ log.content }}</p>
-                </div>
-            {% endfor %}
-        </div>
+        <div class="log-container" id="log-container"></div>
     </main>
 
     <script>
-        function updateLogs() {
-            fetch('/api/logs')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('log-container');
-                    const currentFirstId = container.firstElementChild ? parseInt(container.firstElementChild.getAttribute('data-id')) : -1;
-                    
-                    if (data.length > 0 && data[0].id !== currentFirstId) {
-                        // Hay nuevos logs, reconstruimos la lista
-                        container.innerHTML = data.map(log => `
-                            <div class="log-card ${log.type}" data-id="${log.id}">
-                                <p>${log.content}</p>
-                            </div>
-                        `).join('');
-                    }
-                })
-                .catch(err => console.error('Error actualizando logs:', err));
+        const apiParam = new URLSearchParams(location.search).get('api');
+        const API_BASE_URL = apiParam ? apiParam.replace(/\/$/, '') : '';
+        const container = document.getElementById('log-container');
+
+        function renderLogs(data) {
+            container.innerHTML = data.map(log => `
+                <div class="log-card ${log.type}" data-id="${log.id}">
+                    <p>${log.content}</p>
+                </div>
+            `).join('');
         }
 
-        // Actualizar cada 2 segundos
+        function updateLogs() {
+            if (!API_BASE_URL) {
+                container.innerHTML = `
+                    <div class="log-card message">
+                        <p>Configura el parámetro <strong>?api=</strong> con la URL de tu backend.</p>
+                    </div>
+                `;
+                return;
+            }
+            fetch(API_BASE_URL + '/api/logs')
+                .then(response => response.json())
+                .then(data => renderLogs(data))
+                .catch(() => {
+                    container.innerHTML = `
+                        <div class="log-card delete">
+                            <p>No se pudo obtener logs. Verifica la URL del backend y CORS.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        updateLogs();
         setInterval(updateLogs, 2000);
     </script>
 </body>
