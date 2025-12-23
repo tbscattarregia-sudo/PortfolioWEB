@@ -12,13 +12,37 @@
     </header>
 
     <main>
-<div class="log-container">
-    {% for log in logs %}
-        <div class="log-card {{ log.type }}">
-            <p>{{ log.content }}</p>
+        <div class="log-container" id="log-container">
+            {% for log in logs %}
+                <div class="log-card {{ log.type }}" data-id="{{ log.id }}">
+                    <p>{{ log.content }}</p>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-</div>
     </main>
+
+    <script>
+        function updateLogs() {
+            fetch('/api/logs')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('log-container');
+                    const currentFirstId = container.firstElementChild ? parseInt(container.firstElementChild.getAttribute('data-id')) : -1;
+                    
+                    if (data.length > 0 && data[0].id !== currentFirstId) {
+                        // Hay nuevos logs, reconstruimos la lista
+                        container.innerHTML = data.map(log => `
+                            <div class="log-card ${log.type}" data-id="${log.id}">
+                                <p>${log.content}</p>
+                            </div>
+                        `).join('');
+                    }
+                })
+                .catch(err => console.error('Error actualizando logs:', err));
+        }
+
+        // Actualizar cada 2 segundos
+        setInterval(updateLogs, 2000);
+    </script>
 </body>
 </html>

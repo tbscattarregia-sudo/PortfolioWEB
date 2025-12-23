@@ -7,7 +7,11 @@ import os
 # ---------------- CARGAR VARIABLES ----------------
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-LOG_CHANNEL_ID = int(os.getenv("LOG_CHANNEL_ID"))  # ID del canal de logs
+_log_channel_id = os.getenv("LOG_CHANNEL_ID")
+try:
+    LOG_CHANNEL_ID = int(_log_channel_id.strip().strip('"').strip("'")) if _log_channel_id else None
+except Exception:
+    LOG_CHANNEL_ID = None
 
 # ---------------- CONFIGURAR BOT ----------------
 intents = discord.Intents.default()
@@ -52,7 +56,7 @@ async def send_log(text, log_type="message"):
     await channel.send(embed=embed)
 
     # Guardar en base de datos
-    add_log(text, log_type)
+    add_log(log_type, text)
 
 # ---------------- EVENTOS ----------------
 @bot.event
