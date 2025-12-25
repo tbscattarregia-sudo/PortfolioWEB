@@ -12,7 +12,7 @@
     </header>
 
     <main>
-        <div class="log-container" id="log-container"></div>
+        <div class="log-container" id="log-container"><div class="log-card message"><p>Cargando logs...</p></div></div>
     </main>
 
     <script>
@@ -21,6 +21,14 @@
         const container = document.getElementById('log-container');
 
         function renderLogs(data) {
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = `
+                    <div class="log-card channel">
+                        <p>Sin logs aún. Envía, edita o elimina un mensaje en tu servidor.</p>
+                    </div>
+                `;
+                return;
+            }
             container.innerHTML = data.map(log => `
                 <div class="log-card ${log.type}" data-id="${log.id}">
                     <p>${log.content}</p>
